@@ -1,0 +1,9 @@
+[credential]
+	helper = /mnt/c/Program\\ Files/Git/mingw64/bin/git-credential-manager.exe
+[push]
+	autoSetupRemote = true
+[user]
+	email = 51554341+ssouthcity@users.noreply.github.com
+	name = Stian Sørby
+[init]
+	defaultBranch = main
