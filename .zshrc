@@ -15,7 +15,10 @@ setopt correct
 
 # Custom Commands
 # ===============
+alias ls="ls --color=auto"
+alias ll="ls -alF"
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+function take () { mkdir $1 && cd $1; }
 
 # Golang
 # ======
