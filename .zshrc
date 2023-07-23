@@ -22,4 +22,10 @@ function take () { mkdir $1 && cd $1; }
 
 # Golang
 # ======
-export PATH=$PATH:/usr/local/go/bin
+export PATH="$PATH:/usr/local/go/bin"
+
+# Python
+# ======
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
