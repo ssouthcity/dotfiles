@@ -1,11 +1,11 @@
 return {
   {
     "williamboman/mason.nvim",
-    opts = { 
+    opts = {
       ui = { border = "rounded" },
     },
   },
-  { 
+  {
     "williamboman/mason-lspconfig.nvim",
     dependencies = {
       "williamboman/mason.nvim",
@@ -15,23 +15,38 @@ return {
     opts = {
       ensure_installed = {
         "gopls",
+        "lua_ls",
         "pyright",
+        "rust_analyzer",
       },
     },
     init = function()
       local capabilities = require("cmp_nvim_lsp").capabilities
       require("mason-lspconfig").setup_handlers({
-        function (server_name) 
+        function(server_name)
           require("lspconfig")[server_name].setup({
             capabilities = capabilities,
             settings = {
-              pyright = {
-                venvPath = "venv",
-              },
               gopls = {
                 analyses = {
                   unusedparams = true,
                 },
+              },
+              Lua = {
+                runtime = {
+                  version = "LuaJIT",
+                },
+                diagnostics = {
+                  globals = { "vim", "require" },
+                },
+                workspace = {
+                  library = vim.api.nvim_get_runtime_file("", true),
+                  checkThirdParty = false,
+                },
+                telemetry = { enable = false },
+              },
+              pyright = {
+                venvPath = "venv",
               },
             },
           })

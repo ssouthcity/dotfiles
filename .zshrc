@@ -13,8 +13,6 @@ source ~/.p10k/powerlevel10k.zsh-theme
 setopt autocd
 setopt correct
 
-export DISPLAY=$(awk '/nameserver/ {print $2}' /etc/resolv.conf):0.0
-
 # Custom Commands
 # ===============
 alias ls="ls --color=auto"
@@ -43,6 +41,8 @@ if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
     tmux attach || tmux >/dev/null 2>&1
 fi
 
+# Node
+# ====
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
