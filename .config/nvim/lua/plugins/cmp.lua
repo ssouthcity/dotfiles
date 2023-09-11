@@ -1,15 +1,17 @@
 return {
+
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      "neovim/nvim-lspconfig",
+      -- completion sources
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
 
-      "dcampos/nvim-snippy",
-      "dcampos/cmp-snippy",
+      -- snippet engine
+      "hrsh7th/cmp-vsnip",
+      "hrsh7th/vim-vsnip",
     },
     config = function()
       local cmp = require("cmp")
@@ -17,7 +19,7 @@ return {
       cmp.setup({
         snippet = {
           expand = function(args)
-            require("snippy").expand_snippet(args.body) 
+            vim.fn["vsnip#anonymous"](args.body)
           end,
         },
         window = {
@@ -29,19 +31,19 @@ return {
           ["<C-f>"] = cmp.mapping.scroll_docs(4),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
-          ["<CR>"] = cmp.mapping.confirm({ select = true }), 
+          ["<CR>"] = cmp.mapping.confirm({ select = true }),
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "snippy" }, 
+          { name = "vsnip" },
         }, {
           { name = "buffer" },
-        })
+        }),
       })
 
       cmp.setup.filetype("gitcommit", {
         sources = cmp.config.sources({
-          { name = "git" }, 
+          { name = "git" },
         }, {
           { name = "buffer" },
         })
@@ -50,18 +52,19 @@ return {
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = "buffer" },
+          { name = "buffer" }
         }
       })
 
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-          { name = "path" },
+          { name = "path" }
         }, {
-          { name = "cmdline" },
+          { name = "cmdline" }
         })
       })
     end,
   },
+
 }

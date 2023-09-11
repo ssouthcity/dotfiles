@@ -1,8 +1,6 @@
-vim.g.mapleader = " "
-
 local keymap = vim.keymap
 
--- exit insert fast 
+-- exit insert fast
 keymap.set("i", "jk", "<ESC>")
 
 -- remove highlights
@@ -11,7 +9,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- x no yank
 keymap.set("n", "x", "\"_x")
 
--- increment and decrement 
+-- increment and decrement
 keymap.set("n", "<leader>+", "<C-a>")
 keymap.set("n", "<leader>-", "<C-x>")
 
