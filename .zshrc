@@ -14,6 +14,12 @@ alias ll="ls -alF"
 alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 function take () { mkdir $1 && cd $1; }
 
+function dotenv() {
+  set -a
+  source .env
+  set +a
+}
+
 # Golang
 # ======
 export PATH="$PATH:/usr/local/go/bin"
