@@ -17,6 +17,13 @@ local on_attach = function(client, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
+  vim.diagnostic.config { float = { border = "rounded" }, }
+  local group = vim.api.nvim_create_augroup("Line diagnostics", { clear = true })
+  vim.api.nvim_create_autocmd("CursorHold", {
+    callback = vim.diagnostic.open_float,
+    group = group,
+  })
+
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
 
   nmap("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
@@ -51,7 +58,6 @@ return {
       },
     }
   },
-
 
   {
     "neovim/nvim-lspconfig",

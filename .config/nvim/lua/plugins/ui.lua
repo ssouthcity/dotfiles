@@ -57,15 +57,6 @@ return {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = { "BufReadPost", "BufNewFile" },
-    opts = {
-      char = "┊",
-      show_trailing_blankline_indent = false,
-    },
-  },
-
-  {
     "folke/noice.nvim",
     event = "VeryLazy",
     dependencies = {

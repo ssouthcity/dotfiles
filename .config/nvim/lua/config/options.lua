@@ -39,3 +39,6 @@ opt.iskeyword:append("-")
 
 -- full width status bar
 opt.laststatus = 3
+
+-- faster hover
+opt.updatetime = 300
