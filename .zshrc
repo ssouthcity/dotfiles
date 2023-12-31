@@ -7,22 +7,26 @@ eval "$(starship init zsh)"
 setopt autocd
 setopt correct
 
+export EDITOR="nvim"
+
 # Custom Commands
 # ===============
 alias ls="ls --color=auto"
 alias ll="ls -alF"
-alias dotgit="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-function take () { mkdir $1 && cd $1; }
+alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+function take { mkdir $1 && cd $1; }
+function dotenv { set -a; source .env; set +a; }
 
-function dotenv() {
-  set -a
-  source .env
-  set +a
-}
+# Tmux
+# ====
+if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
+    tmux attach || tmux >/dev/null 2>&1
+fi
 
 # Golang
 # ======
 export PATH="$PATH:/usr/local/go/bin"
+export PATH="$PATH:$HOME/go/bin"
 
 # Python
 # ======
@@ -35,14 +39,6 @@ eval "$(pyenv init -)"
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-# Tmux
-# ====
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    tmux attach || tmux >/dev/null 2>&1
-fi
-
-# Node
-# ====
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# Haskell
+# =======
+[ -f "/home/southcity/.ghcup/env" ] && source "/home/southcity/.ghcup/env" # ghcup-env
