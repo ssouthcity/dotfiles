@@ -1,44 +1,42 @@
-# Theme
-# =====
-eval "$(starship init zsh)"
+# Golang
+# ======
+
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOROOT/bin
+
+# Oh My Zsh plugins
+# =================
+
+export ZSH="$HOME/.oh-my-zsh"
+
+VI_MODE_SET_CURSOR=true
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_FIXTERM=false
+
+plugins=(
+  fzf
+  git
+  golang
+  nvm
+  pyenv
+  starship
+  tmux
+  vi-mode
+  web-search
+)
+
+source $ZSH/oh-my-zsh.sh
 
 # Terminal Behaviour
 # ==================
-setopt autocd
-setopt correct
 
+export LANG="en_US.UTF-8"
 export EDITOR="nvim"
 
-# Custom Commands
-# ===============
-alias ls="ls --color=auto"
-alias ll="ls -alF"
+# Aliases and Commands
+# ====================
+
 alias dotfiles="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-function take { mkdir $1 && cd $1; }
-function dotenv { set -a; source .env; set +a; }
-
-# Tmux
-# ====
-if [ -x "$(command -v tmux)" ] && [ -n "${DISPLAY}" ] && [ -z "${TMUX}" ]; then
-    tmux attach || tmux >/dev/null 2>&1
-fi
-
-# Golang
-# ======
-export PATH="$PATH:/usr/local/go/bin"
-export PATH="$PATH:$HOME/go/bin"
-
-# Python
-# ======
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
-# Node
-# ====
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Haskell
-# =======
-[ -f "/home/southcity/.ghcup/env" ] && source "/home/southcity/.ghcup/env" # ghcup-env
