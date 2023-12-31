@@ -18,13 +18,11 @@ local on_attach = function(client, bufnr)
   end
 
   vim.diagnostic.config { float = { border = "rounded" }, }
-  local group = vim.api.nvim_create_augroup("Line diagnostics", { clear = true })
-  vim.api.nvim_create_autocmd("CursorHold", {
-    callback = vim.diagnostic.open_float,
-    group = group,
-  })
 
-  nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+  nmap("K", function()
+    vim.lsp.buf.hover()
+    vim.diagnostic.open_float()
+  end, "Hover Documentation")
 
   nmap("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
   nmap("<leader>ca", vim.lsp.buf.code_action, "Perform code action")
