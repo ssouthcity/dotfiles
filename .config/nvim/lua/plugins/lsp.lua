@@ -6,6 +6,16 @@ local servers = {
       telemetry = { enable = false },
     },
   },
+  yamlls = {
+    yaml = {
+      schemas = {
+        ["https://json.schemastore.org/github-action.json"] = "/.github/workflows/*",
+        ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
+        "/pipelines/*",
+        kubernetes = "/k8s/*",
+      },
+    },
+  },
 }
 
 local on_attach = function(client, bufnr)
