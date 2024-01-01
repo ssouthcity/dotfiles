@@ -16,3 +16,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
+# Azure
+# =====
+export PATH="$PATH:$HOME/.azure/bin"
+export PATH="$PATH:$HOME/.dotnet"
