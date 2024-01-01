@@ -7,6 +7,7 @@ VI_MODE_SET_CURSOR=true
 ZSH_TMUX_AUTOSTART=true
 
 plugins=(
+  direnv
   fzf
   git
   golang
