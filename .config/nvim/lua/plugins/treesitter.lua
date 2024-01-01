@@ -27,6 +27,7 @@ return {
       ensure_installed = {
         -- devops
         "bash",
+        "terraform",
         -- web
         "html",
         "css",
