@@ -7,13 +7,20 @@ VI_MODE_SET_CURSOR=true
 ZSH_TMUX_AUTOSTART=true
 
 plugins=(
+  azure
+  cabal
+  catimg
   direnv
+  docker
   fzf
   git
   golang
+  kubectl
   nvm
   pyenv
+  rust
   starship
+  terraform
   tmux
   vi-mode
   web-search
