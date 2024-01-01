@@ -31,7 +31,6 @@ source $ZSH/oh-my-zsh.sh
 # Terminal Behaviour
 # ==================
 
-export LANG="en_US.UTF-8"
 export EDITOR="nvim"
 
 # Aliases and Commands
