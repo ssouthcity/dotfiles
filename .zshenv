@@ -20,3 +20,7 @@ eval "$(pyenv init --path)"
 # =====
 export PATH="$PATH:$HOME/.azure/bin"
 export PATH="$PATH:$HOME/.dotnet"
+
+# Haskell
+# =======
+. "$HOME/.ghcup/env"
