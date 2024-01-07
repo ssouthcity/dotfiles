@@ -18,53 +18,16 @@ local servers = {
   },
 }
 
-local on_attach = function(client, bufnr)
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = "LSP: " .. desc
-    end
-
-    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-  end
-
-  vim.diagnostic.config { float = { border = "rounded" }, }
-
-  nmap("K", function()
-    vim.lsp.buf.hover()
-    vim.diagnostic.open_float()
-  end, "Hover Documentation")
-
-  nmap("<leader>rn", vim.lsp.buf.rename, "Rename symbol")
-  nmap("<leader>ca", vim.lsp.buf.code_action, "Perform code action")
-
-  nmap("gd", vim.lsp.buf.definition, "Goto definition")
-  nmap("gD", vim.lsp.buf.declaration, "Goto declaration")
-  nmap("gi", vim.lsp.buf.implementation, "Goto implementation")
-  nmap("td", vim.lsp.buf.type_definition, "Goto type definition")
-
-  vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    vim.lsp.buf.format()
-  end, { desc = "Format current buffer with LSP" })
-
-  vim.api.nvim_create_autocmd("BufWritePre", {
-    buffer = bufnr,
-    callback = function()
-      if client.server_capabilities.documentFormattingProvider then
-        vim.lsp.buf.format({ bufnr = bufnr })
-      end
-    end
-  })
-end
-
 return {
 
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
     event = "LspAttach",
     opts = {
-      window = {
-        blend = 0,
+      notification = {
+        window = {
+          winblend = 0,
+        },
       },
     }
   },
@@ -95,7 +58,6 @@ return {
         function(server_name)
           require("lspconfig")[server_name].setup({
             capabilities = capabilities,
-            on_attach = on_attach,
             settings = servers[server_name],
             filetypes = (servers[server_name] or {}).filetypes,
           })
