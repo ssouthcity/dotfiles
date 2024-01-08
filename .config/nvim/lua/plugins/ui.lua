@@ -36,6 +36,7 @@ return {
 
   {
     "rcarriga/nvim-notify",
+    event = "VeryLazy",
     keys = {
       {
         "<leader>un",

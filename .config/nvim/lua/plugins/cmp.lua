@@ -2,6 +2,7 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
     dependencies = {
       -- completion sources
       "hrsh7th/cmp-nvim-lsp",
