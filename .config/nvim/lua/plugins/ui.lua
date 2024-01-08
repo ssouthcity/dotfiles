@@ -9,6 +9,7 @@ return {
       transparent_background = true,
       integrations = {
         fidget = true,
+        lsp_trouble = true,
         mason = true,
         noice = true,
         notify = true,
