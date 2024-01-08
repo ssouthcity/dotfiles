@@ -24,3 +24,7 @@ keymap.set("n", "<leader>to", ":tabnew<CR>")
 keymap.set("n", "<leader>tx", ":tabclose<CR>")
 keymap.set("n", "<leader>tn", ":tabn<CR>")
 keymap.set("n", "<leader>tp", ":tabp<CR>")
+
+-- move code blocks
+keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+keymap.set("v", "K", ":m '<-2<CR>gv=gv")
