@@ -1,12 +1,13 @@
 return {
 
   {
-    "nvim-tree/nvim-tree.lua",
+    'stevearc/oil.nvim',
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false,
     keys = {
-      { "<leader>e", "<CMD>NvimTreeToggle<CR>", desc = "Open file explorer" },
+      { "-", "<CMD>Oil<CR>", desc = "Open File Explorer" },
     },
-    config = true,
+    opts = {},
   },
 
   {
