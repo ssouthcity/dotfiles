@@ -1,21 +1,6 @@
 return {
 
   {
-    "stevearc/oil.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    lazy = false,
-    keys = {
-      { "-", "<CMD>Oil<CR>", desc = "Open File Explorer" },
-    },
-    opts = {
-      keymaps = {
-        ["<C-h>"] = false,
-        ["<C-l>"] = false,
-      },
-    },
-  },
-
-  {
     "nvim-telescope/telescope.nvim",
     branch = "0.1.x",
     cmd = "Telescope",
@@ -67,13 +52,5 @@ return {
       telescope.load_extension("ui-select")
     end,
   },
-
-  {
-    "lewis6991/gitsigns.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    config = true,
-  },
-
-  "tpope/vim-fugitive",
 
 }
