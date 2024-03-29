@@ -1,5 +1,9 @@
 local servers = {
-  gopls = {},
+  gopls = {
+    gopls = {
+      gofumpt = true,
+    },
+  },
   lua_ls = {
     Lua = {
       workspace = { checkThirdParty = false },
@@ -9,7 +13,7 @@ local servers = {
   yamlls = {
     yaml = {
       schemas = {
-        ["https://json.schemastore.org/github-action.json"] = "/.github/workflows/*",
+        ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
         ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
         "/pipelines/*",
         kubernetes = "/k8s/*",
