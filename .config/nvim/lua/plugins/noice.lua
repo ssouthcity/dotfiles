@@ -39,10 +39,10 @@ return {
   {
     'mrded/nvim-lsp-notify',
     dependencies = { 'rcarriga/nvim-notify' },
-    config = function(opts)
-      require("lsp-notify").setup(vim.tbl_deep_extend("force", opts, {
+    config = function()
+      require("lsp-notify").setup({
         notify = require("notify"),
-      }))
+      })
     end,
   },
 
