@@ -10,12 +10,17 @@ return {
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
 
+      -- style
+      "onsails/lspkind.nvim",
+
       -- snippet engine
       "hrsh7th/cmp-vsnip",
       "hrsh7th/vim-vsnip",
+      "rafamadriz/friendly-snippets",
     },
     config = function()
       local cmp = require("cmp")
+      local lspkind = require("lspkind")
 
       cmp.setup({
         snippet = {
@@ -36,34 +41,31 @@ return {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
-          { name = "vsnip" },
-        }, {
-          { name = "buffer" },
+          { name = "buffer",  max_item_count = 5 },
+          { name = "path",    max_item_count = 3 },
+          { name = "vsnip",   max_item_count = 3 },
         }),
-      })
-
-      cmp.setup.filetype("gitcommit", {
-        sources = cmp.config.sources({
-          { name = "git" },
-        }, {
-          { name = "buffer" },
-        })
+        formatting = {
+          expandable_indicator = true,
+          fields = { "abbr", "kind", "menu" },
+          format = lspkind.cmp_format({
+            mode = "symbol"
+          }),
+        },
       })
 
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
         sources = {
-          { name = "buffer" }
-        }
+          { name = "buffer" },
+        },
       })
 
       cmp.setup.cmdline(":", {
         mapping = cmp.mapping.preset.cmdline(),
         sources = cmp.config.sources({
-          { name = "path" }
-        }, {
-          { name = "cmdline" }
-        })
+          { name = "cmdline" },
+        }),
       })
     end,
   },
