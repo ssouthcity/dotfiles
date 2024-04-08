@@ -14,9 +14,18 @@ local servers = {
     yaml = {
       schemas = {
         ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*",
-        ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] =
-        "/pipelines/*",
         kubernetes = "/k8s/*",
+      },
+    },
+  },
+  -- Azure extended the standard for yaml schemas, requiring an additional language server
+  azure_pipelines_ls = {
+    filetypes = { "yaml" },
+    settings = {
+      yaml = {
+        schemas = {
+          ["https://raw.githubusercontent.com/microsoft/azure-pipelines-vscode/master/service-schema.json"] = "*",
+        },
       },
     },
   },
